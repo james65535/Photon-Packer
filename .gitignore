@@ -1,8 +1,4 @@
-photon-1.0-a6f0f63.iso
-Vagrantfile
+photon-1.0-13c08b6.iso
 Photon-vagrant.box
 packer-cache/
 packer-cache/**
-output-vagrant/
-output-vagrant/**
-.vagrant

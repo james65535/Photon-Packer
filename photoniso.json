@@ -1,7 +1,7 @@
 {
   "variables": {
-    "iso_file": "photon-1.0-a6f0f63.iso",
-    "iso_checksum_value": "aff58f10855db6f9f5fae62641816044dd459ffa",
+    "iso_file": "photon-1.0-13c08b6.iso",
+    "iso_checksum_value": "a3acb6922c93e2b0cdc186abd5352bb0e61b986b",
     "product_name": "Photon",
     "product_version": "1.0",
     "headless": "false",
