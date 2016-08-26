@@ -6,7 +6,12 @@
 
 # Commands
  
+Create Vagrant Box:
+
 * packer build photoniso.json
 * vagrant box add -name Photon-vagrant --provider=vmware_desktop Photon-vagrant.box
+
+Navigate to desired Vagrant folder and run Vagrant Environment:
+
 * vagrant init Photon-vagrant
 * vagrant up
