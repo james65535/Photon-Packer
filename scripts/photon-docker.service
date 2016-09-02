@@ -1,7 +1,9 @@
 [Unit]
 Description=Docker Daemon
+After=iptables.service
 
 [Service]
+ExecStartPre=/usr/sbin/iptables -A INPUT -p tcp --dport 2375 -j ACCEPT
 ExecStart=/bin/docker daemon -D -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
