@@ -49,12 +49,21 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "scripts/photon-docker.service",
-      "destination": "/lib/systemd/system/docker.service"
+      "source": "scripts/photon-dev.repo",
+      "destination": "/etc/yum.repos.d/photon-dev.repo"
     },
     {
       "type": "shell",
       "script": "scripts/photon-provisioning.sh"
+    },
+    {
+      "type": "file",
+      "source": "scripts/photon-docker.service",
+      "destination": "/usr/lib/systemd/system/docker.service"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/docker-provisioning.sh"
     }
   ],
   "post-processors": [

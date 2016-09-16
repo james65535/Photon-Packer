@@ -1,13 +1,23 @@
 [Unit]
 Description=Docker Daemon
-After=iptables.service
+Documentation=http://docs.docker.com
+Wants=network-online.target
+After=network-online.target iptables.service docker-containerd.service
+Requires=docker-containerd.service
 
 [Service]
+Type=notify
+EnvironmentFile=-/etc/default/docker
 ExecStartPre=/usr/sbin/iptables -A INPUT -p tcp --dport 2375 -j ACCEPT
-ExecStart=/bin/docker daemon -D -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+ExecStartPre=/usr/sbin/iptables -A INPUT -p tcp --dport 2377 -j ACCEPT
+ExecStart=/usr/bin/docker daemon -D -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock \
+          --containerd /run/containerd.sock
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
-Restart=always
+Restart=on-abnormal
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=infinity
 
 [Install]
 WantedBy=multi-user.target
